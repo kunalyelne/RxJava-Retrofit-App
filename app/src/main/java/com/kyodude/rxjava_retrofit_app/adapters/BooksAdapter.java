@@ -17,7 +17,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
 
     private List<BookDataModel> bookList;
 
-    public BooksAdapter(List<BookDataModel> list, Context context) {
+    public BooksAdapter(List<BookDataModel> list) {
         bookList = list;
     }
 
@@ -30,15 +30,24 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
 
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
-        BookDataModel book = bookList.get(position);
-        Glide.with(holder.bookItemBinding.ivBook).load(book.getVolumeInfo().getImageLinks().getSmallThumbnail()).circleCrop().into(holder.bookItemBinding.ivBook);
-        holder.bookItemBinding.tvBookName.setText(book.getVolumeInfo().getTitle());
-        holder.bookItemBinding.tvPublisher.setText(book.getVolumeInfo().getPublisher());
-        holder.bookItemBinding.tvBookDesc.setText(book.getVolumeInfo().getDescription());
+        if(bookList!=null)
+        {
+            BookDataModel book = bookList.get(position);
+            Glide.with(holder.bookItemBinding.ivBook).load(book.getVolumeInfo().getImageLinks().getSmallThumbnail()).circleCrop().into(holder.bookItemBinding.ivBook);
+            holder.bookItemBinding.tvBookName.setText(book.getVolumeInfo().getTitle());
+            holder.bookItemBinding.tvPublisher.setText(book.getVolumeInfo().getPublisher());
+            holder.bookItemBinding.tvBookDesc.setText(book.getVolumeInfo().getDescription());
+        }
     }
     @Override
     public int getItemCount() {
-        return bookList.size();
+        if(bookList!=null)
+        {
+            return bookList.size();
+        }
+        else {
+            return 0;
+        }
     }
 
     static class BookViewHolder extends RecyclerView.ViewHolder {
@@ -47,5 +56,10 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
             super(bookItemBinding.getRoot());
             this.bookItemBinding = bookItemBinding;
         }
+    }
+
+    public void setList(List<BookDataModel> list) {
+        bookList = list;
+        notifyDataSetChanged();
     }
 }
