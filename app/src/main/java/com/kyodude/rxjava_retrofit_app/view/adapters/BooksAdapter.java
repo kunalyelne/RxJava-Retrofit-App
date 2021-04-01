@@ -1,6 +1,5 @@
-package com.kyodude.rxjava_retrofit_app.adapters;
+package com.kyodude.rxjava_retrofit_app.view.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 

@@ -1,7 +1,6 @@
 package com.kyodude.rxjava_retrofit_app.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -11,13 +10,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 
-import com.kyodude.rxjava_retrofit_app.adapters.BooksAdapter;
+import com.kyodude.rxjava_retrofit_app.view.adapters.BooksAdapter;
 import com.kyodude.rxjava_retrofit_app.databinding.ActivityMainBinding;
 import com.kyodude.rxjava_retrofit_app.model.dataModel.BookDataModel;
 import com.kyodude.rxjava_retrofit_app.viewModel.MainActivityViewModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
