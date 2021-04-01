@@ -1,6 +1,7 @@
 package com.kyodude.rxjava_retrofit_app.di;
 
 import com.kyodude.rxjava_retrofit_app.model.api.RetroService;
+import com.kyodude.rxjava_retrofit_app.repository.Repository;
 
 import javax.inject.Singleton;
 
@@ -24,6 +25,12 @@ final class AppModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(RetroService.class);
+    }
+
+    @Singleton
+    @Provides
+    static Repository provideRepository(RetroService api) {
+        return new Repository(api);
     }
 
 }
