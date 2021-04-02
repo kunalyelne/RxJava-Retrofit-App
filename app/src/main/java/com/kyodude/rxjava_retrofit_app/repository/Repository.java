@@ -22,8 +22,8 @@ public class Repository {
 
     private static final String TAG = "Repository";
     private final RetroService api;
-    private MutableLiveData<List<BookDataModel>> bookList = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isLoading = new MutableLiveData<>(false);
+    private final MutableLiveData<List<BookDataModel>> bookList = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isLoading = new MutableLiveData<>(false);
     @Inject
     public Repository(RetroService api) {
         this.api = api;

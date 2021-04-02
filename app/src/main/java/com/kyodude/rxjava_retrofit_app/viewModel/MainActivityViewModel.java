@@ -16,15 +16,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class MainActivityViewModel extends ViewModel {
 
-    private Repository repository;
-    private MutableLiveData<String> query = new MutableLiveData<>();
+    private final Repository repository;
+    private final MutableLiveData<String> query = new MutableLiveData<>();
 
     @Inject MainActivityViewModel(Repository repository) {
         this.repository = repository;
     }
 
     public LiveData<List<BookDataModel>> getBookListLiveData() {
-        return Transformations.switchMap(query, query -> repository.getBooks(query));
+        return Transformations.switchMap(query, repository::getBooks);
     }
 
     public LiveData<Boolean> getIsLoading() {

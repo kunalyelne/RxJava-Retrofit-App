@@ -57,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        viewModel.getBookListLiveData().observe(this, bookList -> {
-            booksAdapter.setList(bookList);
-        } );
+        viewModel.getBookListLiveData().observe(this, booksAdapter::setList);
     }
 }
